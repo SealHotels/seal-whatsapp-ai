@@ -10,6 +10,7 @@ const qrcode = require('qrcode-terminal');
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
       "--disable-gpu"
+     "--disable-web-security",
     ]
   }
 });
