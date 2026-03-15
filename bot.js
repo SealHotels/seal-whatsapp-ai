@@ -2,15 +2,17 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
  const client = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth({
+  clientId: "seal-bot"
+}),
   puppeteer: {
     headless: true,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
-      "--disable-gpu"
-     "--disable-web-security",
+      "--disable-gpu",
+"--disable-web-security",
     ]
   }
 });
@@ -29,7 +31,7 @@ client.on('message', async msg => {
   if(text.includes("price") || text.includes("cost")){
     msg.reply("Our SEAL QR ordering system costs ₹7000 one-time. There is no mandatory monthly payment.");
   }
-
+haa
   else if(text.includes("monthly")){
     msg.reply("There is no mandatory monthly payment. Only a one-time setup.");
   }
