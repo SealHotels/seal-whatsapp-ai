@@ -14,7 +14,7 @@ const client = new Client({
     "--single-process",
     "--no-zygote"
   ]
-}
+ },
   webVersionCache: {
     type: "remote"
   }
