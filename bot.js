@@ -25,7 +25,9 @@ client.on('ready', () => {
   console.log('SEAL AI WhatsApp Assistant is ready!');
 });
 
-client.on('message_create', async msg => {
+client.on('message', async msg => {
+
+ if (msg.fromMe) return;
 
   const text = msg.body.toLowerCase();
 
@@ -45,5 +47,6 @@ client.on('message_create', async msg => {
   }
 
 });
+client.initialize();
 
 client.initialize();
