@@ -18,7 +18,7 @@ const qrcode = require('qrcode-terminal');
 });
 client.on('qr', qr => {
   console.log('QR RECEIVED:', qr);
-  qrcode.generate(qr, { small: true });
+  console.log(qr);
 });
 
 client.on('ready', () => {
