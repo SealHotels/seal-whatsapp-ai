@@ -15,9 +15,6 @@ const client = new Client({
     "--no-zygote"
   ]
  },
-  webVersionCache: {
-    type: "remote"
-  }
 });
 client.on('qr', qr => {
   console.log('QR RECEIVED:', qr);
