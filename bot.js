@@ -1,19 +1,22 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
- const client = new Client({
-  authStrategy: new LocalAuth({
-  clientId: "seal-bot"
-}),
+const client = new Client({
+  authStrategy: new LocalAuth({ clientId: "seal-bot" }),
   puppeteer: {
-    headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu",
-"--disable-web-security",
-    ]
+  headless: true,
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--disable-web-security",
+    "--single-process",
+    "--no-zygote"
+  ]
+}
+  webVersionCache: {
+    type: "remote"
   }
 });
 client.on('qr', qr => {
@@ -28,7 +31,8 @@ client.on('ready', () => {
 client.on('message', async msg => {
 
  if (msg.fromMe) return;
-
+ if (!msg.body) return;
+console.log("MESSAGE:", msg.body);
   const text = msg.body.toLowerCase();
 
   if(text.includes("price") || text.includes("cost")){
