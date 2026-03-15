@@ -18,8 +18,8 @@ const client = new Client({
 });
 
 client.on('qr', qr => {
-  console.log("Open this link and scan the QR:");
-  console.log("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + qr);
+  console.log("Scan this QR quickly:");
+  qrcode.generate(qr, { small: false });
 });
 
 client.on('ready', () => {
